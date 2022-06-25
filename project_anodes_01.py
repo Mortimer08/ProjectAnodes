@@ -449,8 +449,8 @@ if __name__ == '__main__':
     # импорт данных из файла
     file_name='cells.data'
     cells, takes, teams = import_from_file(file_name)
-#    clearing = clearing_interface()
-#    clearing.cell_clearing(cells['C11'], '25.06.2022', '')
+    clearing = clearing_interface()
+    clearing.cell_clearing(cells['C11'], '25.06.2022', '')
     cfw = dict_for_window(teams, cells, takes)
 
     # тело программы - внесение изменений в данные, анализ данных
