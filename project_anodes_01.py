@@ -491,7 +491,11 @@ class Ui_MainWindow(object):
         
     def C12CellClearingClicked(self, checked):
         print(checked)
-
+        
+class clearing_interface():
+    
+    def cell_clearing(self, cell, clearing_date, comment):
+        cell.clearing(clearing_date, comment)
         
 # функция перевода строки дата в формат datetime
 def str_to_date(date_str):
@@ -663,6 +667,8 @@ if __name__ == '__main__':
     # импорт данных из файла
     file_name='cells.data'
     cells, takes, teams = import_from_file(file_name)
+    clearing = clearing_interface()
+    clearing.cell_clearing(cells['C11'], '25.06.2022', '')
     cfw = dict_for_window(teams, cells, takes)
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
