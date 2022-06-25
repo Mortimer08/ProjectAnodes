@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-5.1.dtd">
+<!-- eric project file for project Anodes -->
+<!-- Saved: 2022-06-15, 13:17:38 -->
+<!-- Copyright (C) 2022 ,  -->
+<Project version="5.1">
+  <Language>en_US</Language>
+  <Hash>701fbb261e81ea46fdb01ed0f2dc54a2aeb43378</Hash>
+  <ProgLanguage mixed="0">Python3</ProgLanguage>
+  <ProjectType>PyQt5</ProjectType>
+  <Description>Формирование базы данных с информацией о чистке анодов и ванн, а также вывод аналитической информации из неё</Description>
+  <Version>0.1</Version>
+  <Author></Author>
+  <Email></Email>
+  <Eol index="0"/>
+  <Sources>
+    <Source>Import_from_excel/import.py</Source>
+    <Source>Ui_TestForm_Qt_1.py</Source>
+    <Source>Ui_TestForm_Qt_3.py</Source>
+    <Source>__init__.py</Source>
+    <Source>cells_making/__init__.py</Source>
+    <Source>class_testing_v03_1.py</Source>
+    <Source>files_working.py</Source>
+    <Source>listhelp.py</Source>
+    <Source>project_anodes_01.py</Source>
+  </Sources>
+  <Forms>
+    <Form>form_Qt_1.ui</Form>
+  </Forms>
+  <Others>
+    <Other>BackUp/cells (all_clearing_data_filled_09_05_2022).data</Other>
+    <Other>BackUp/cells (all_rows_cleaning_filled_09_05_2022).data</Other>
+    <Other>BackUp/cells (empty_copy).data</Other>
+    <Other>BackUp/cells (row_C_cells_clearing_filled).data</Other>
+    <Other>Import_from_excel/cells.data</Other>
+    <Other>cells.data</Other>
+  </Others>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.data" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.e4p" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES"/>
+    <FiletypeAssociation pattern="*.md" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.proto" type="PROTOCOLS"/>
+    <FiletypeAssociation pattern="*.py" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.py3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES"/>
+    <FiletypeAssociation pattern="*.rst" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.txt" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ui" type="FORMS"/>
+    <FiletypeAssociation pattern="GNUmakefile" type="OTHERS"/>
+    <FiletypeAssociation pattern="Makefile" type="OTHERS"/>
+    <FiletypeAssociation pattern="README" type="OTHERS"/>
+    <FiletypeAssociation pattern="README.*" type="OTHERS"/>
+    <FiletypeAssociation pattern="makefile" type="OTHERS"/>
+  </FiletypeAssociations>
+</Project>
