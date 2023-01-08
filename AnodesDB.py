@@ -52,14 +52,51 @@ with con:
             with con:
                 con.execute("""
                 CREATE TABLE CellsInRow (
-                    CellUniqueID INTEGER AUTO_INCREMENT PRIMARY KEY,
+                    CellUniqueID INTEGER PRIMARY KEY,
                     RowsID VARCHAR (1),
                     CellsID INTEGER,
                     FOREIGN KEY (RowsID) REFERENCES Rows (Litera),
                     FOREIGN KEY (CellsID) REFERENCES Cells (Number)
                 );
                 """)
+    data = con.execute("""
+                CREATE TABLE IF NOT EXISTS TakesInCells (
+                    TakeUniqueID INTEGER PRIMARY KEY,
+                    CellsInRowID INTEGER,
+                    TakeID INTEGER,
+                    FOREIGN KEY (CellsInRowID) REFERENCES CellsInRow (CellUniqueID),
+                    FOREIGN KEY (TakeID) REFERENCES Takes (Number)
+                );
+                """)
+    
 
+    # data = con.execute('drop table CellsInRow')
+    # data = con.execute('drop table TakesInCells')
+
+# Наполнение базы
+
+# with con:
+#     data = con.execute("SELECT * FROM Rows")
+#     for row in data:
+#         print(row[0],row[1])
+#         for cell in range(1,row[1]+1):
+#             sqlCellCreate = f'INSERT INTO CellsInRow (RowsID, CellsID) values("{row[0]}",{cell})'
+#             con.execute(sqlCellCreate)
+
+# with con:
+#     data = con.execute("SELECT * FROM CellsInRow")
+#     for row in data:
+#         print(row[0],row[1])
+#         for take in range(1,5):
+#             sqlTakeCreate = f'INSERT INTO TakesInCells (CellsInRowID, TakeID) values({row[0]},{take})'
+#             con.execute(sqlTakeCreate)
+
+# sql = 'INSERT INTO TakesInCells (CellsInRowID, TakeID) values(?,?)'
+# data = [
+#     (1, 2)
+# ]
+# with con:
+#     con.executemany(sql, data)
 
 # sql = 'INSERT INTO Rows (Litera, CellsAmmount, Serial) values(?,?,?)'
 # data = [
@@ -89,6 +126,9 @@ with con:
 # with con:
 #     con.executemany(sql,data)
 
+
+# Вывод данных из базы
+
 with con:
 
     # data = con.execute("SELECT name FROM sqlite_master WHERE type = 'table'")
@@ -97,7 +137,11 @@ with con:
 
     # data = con.execute("SELECT * FROM Rows")
     # for row in data:
-    #     print(row)
+    #     print(row[0],row[1])
+    #     for cell in range(1,row[1]+1):
+    #         sqlCellCreate = f'INSERT INTO CellsInRow (RowsID, CellsID) values({row[0]},{cell})'
+    #         print(sqlCellCreate)
+    #     print()
 
     # data = con.execute("SELECT * FROM Cells")
     # for row in data:
@@ -112,5 +156,11 @@ with con:
     #     print(*row)
 
     data = con.execute("SELECT * FROM CellsInRow")
+    print()
+    for row in data:
+        print(*row)
+
+    data = con.execute("SELECT * FROM TakesInCells")
+    print()
     for row in data:
         print(*row)
