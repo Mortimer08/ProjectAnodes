@@ -55,20 +55,25 @@ with con:
                     CellUniqueID INTEGER PRIMARY KEY,
                     RowsID VARCHAR (1),
                     CellsID INTEGER,
+                    CellName VARCHAR (4)
                     FOREIGN KEY (RowsID) REFERENCES Rows (Litera),
                     FOREIGN KEY (CellsID) REFERENCES Cells (Number)
                 );
                 """)
+    
+    # con.execute('ALTER TABLE CellsInRow ADD CellName VARCHAR (4)')
+
     data = con.execute("""
                 CREATE TABLE IF NOT EXISTS TakesInCells (
                     TakeUniqueID INTEGER PRIMARY KEY,
                     CellsInRowID INTEGER,
                     TakeID INTEGER,
+                    TakeName VARCHAR (7),
                     FOREIGN KEY (CellsInRowID) REFERENCES CellsInRow (CellUniqueID),
                     FOREIGN KEY (TakeID) REFERENCES Takes (Number)
                 );
                 """)
-    
+    # con.execute('ALTER TABLE TakesInCells ADD TakeName VARCHAR (7)')
 
     # data = con.execute('drop table CellsInRow')
     # data = con.execute('drop table TakesInCells')
@@ -82,6 +87,20 @@ with con:
 #         for cell in range(1,row[1]+1):
 #             sqlCellCreate = f'INSERT INTO CellsInRow (RowsID, CellsID) values("{row[0]}",{cell})'
 #             con.execute(sqlCellCreate)
+
+# with con:
+#     data = con.execute("SELECT * FROM CellsInRow")
+#     for row in data:
+#         sqlCellCreate = f'UPDATE CellsInRow SET CellName = "{row[1]}{str(row[2])}" WHERE CellUniqueID = {row[0]}'
+#         con.execute(sqlCellCreate)
+
+with con:
+    data = con.execute("SELECT * FROM TakesInCells")
+    for row in data:
+        data2 = con.execute(f'SELECT * FROM CellsInRow WHERE CellUniqueID = "{row[1]}"')
+        CellNameFromDB = data2.fetchall()[0][3]
+        sqlTakeCreate = f'UPDATE TakesInCells SET TakeName = "{CellNameFromDB}({row[2]})" WHERE TakeUniqueID = {row[0]}'
+        con.execute(sqlTakeCreate)
 
 # with con:
 #     data = con.execute("SELECT * FROM CellsInRow")
@@ -155,10 +174,10 @@ with con:
     # for row in data:
     #     print(*row)
 
-    data = con.execute("SELECT * FROM CellsInRow")
-    print()
-    for row in data:
-        print(*row)
+    # data = con.execute("SELECT * FROM CellsInRow")
+    # print()
+    # for row in data:
+    #     print(*row)
 
     data = con.execute("SELECT * FROM TakesInCells")
     print()
